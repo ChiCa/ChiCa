@@ -4,7 +4,7 @@ from twilio.rest import TwilioRestClient
 import os
  
 app = Flask(__name__)
-numbers = {"+13618160814":["+5104849529", "+3618160815"]}
+numbers = {"+13618160814":["+15104849529", "+13618160815"]}
 
 #Account Sid and Auth Token from twilio.com/user/account
 account_sid = os.environ['TWILIO_ACCOUNT_SID']
@@ -24,7 +24,7 @@ def hello_monkey():
 	if from_number in numbers:
 		return redirect("/registered-user")
 	else:
-		numbers.append(from_number)
+		numbers[from_number] = []
 		with resp.gather(numDigits=12, action="/sign-up", method="POST") as g:
  			g.say("Welcome to ChiCa. ChiCa help you build a network of mothers who can exchange child care among eachother. To signup to the ChiCa community type in the number of your friend after the beep.")
  	return str(resp)
@@ -35,7 +35,7 @@ def handle_key():
  
     # Get the digit pressed by the user
     friend_number = request.values.get('Digits', None)
-    numbers.append(friend_number)
+    numbers["+13618160814"].append(friend_number)
     
     resp = twilio.twiml.Response()
         # Dial (310) 555-1212 - connect that number to the incoming caller.
@@ -64,7 +64,7 @@ def decision():
 def choose_day():
 	resp = twilio.twiml.Response()
 
-	with resp.gather(numDigits=1, action="/record-message", method="POST") as g:
+	with resp.gather(numDigits=1, action="/send-text-messages", method="POST") as g:
  		g.say("If you need child care tomorrow, press zero. If you need child care the day after tomorrow, press one.", voice="woman")
  	return str(resp)
 
@@ -82,12 +82,16 @@ def send_text_messages():
 
 @app.route("/tommorrow-text", methods=['GET', 'POST'])
 def send_tommorrow_text():
-    msg_to_list = numbers.values()
-    for number in msg_to_list:
-        message = client.messages.create(body="A ChiCa in your circle needs child care tommorrow.  Can you help her?",
-        to=number,    # Replace with your phone number
-        from_="+18447079094") # Replace with your Twilio number
-        print message.sid
+    #msg_to_list = numbers.values()
+    #for number in msg_to_list:
+    # message = client.messages.create(body="A ChiCa in your circle needs child care tommorrow.  Can you help her?",
+    #     to=+"+15104849529",    # Replace with your phone number
+    #     from_="+18447079094") # Replace with your Twilio number
+
+	resp = twilio.twiml.Response()
+	resp.say("cheeka is requesting child care from your circle.")
+	resp.sms("A ChiCa in your circle needs child care tommorrow.  Can you help her?", To="+15104849529", From="+18447079094")
+	return str(resp)
 
 @app.route("/day-after-tommorrow-text", methods=['GET', 'POST'])
 def send_day_after_text():
