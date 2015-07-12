@@ -3,7 +3,7 @@ import twilio.twiml
 
 
 app = Flask(__name__)
-numbers = ["+13618160814"]
+numbers = {"+13618160814":["+5104849529", "+3618160815"]}
 
 
 @app.route("/", methods=['GET', 'POST'])
@@ -48,7 +48,7 @@ def request_care():
 def decision():
 	choice = request.values.get('Digits', None)
 	if choice == "0":
-		return redirect("/choose-day")
+          return redirect("/choose-day")
 	elif choice == "1":
 		return redirect("/add-friend")
 	else:
@@ -62,19 +62,35 @@ def choose_day():
  		g.say("If you need child care tomorrow, press zero. If you need child care the day after tomorrow, press one.", voice="woman")
  	return str(resp)
 
-@app.route("/record-message", methods=['GET', 'POST'])
-def record_message():
+@app.route("/send-text-messages", methods=['GET', 'POST'])
+def send_text_messages():
 	choice = request.values.get('Digits', None)
 	resp = twilio.twiml.Response()
 	if choice == "0":
-		resp.say("Tomorrow.")
-		return str(resp)
+		return redirect("/tommorrow-text")
 	elif choice == "1":
-		resp.say("Day after tomorrow.")
-		return str(resp)
+		return redirect ("/day-after-tomorrow-text.")
 	else:
 		resp.say("I am sorry, I did not understand.")
 		return redirect("/choose-day")
+
+@app.route("/tommorrow-text", methods=['GET', 'POST'])
+def send_tommorrow_text():
+    msg_to_list = numbers.values()
+    for number in msg_to_list:
+        message = client.messages.create(body="A ChiCa in your circle needs child care tommorrow.  Can you help her?",
+        to=number,    # Replace with your phone number
+        from_="+18447079094") # Replace with your Twilio number
+        print message.sid
+
+@app.route("/day-after-tommorrow-text", methods=['GET', 'POST'])
+def send_day_after_text():
+    msg_to_list = numbers.values()
+    for number in msg_to_list:
+        message = client.messages.create(body="A ChiCa in your circle needs child care day after tommorrow.  Can you help her?",
+        to=number,    # Replace with your phone number
+        from_="+18447079094") # Replace with your Twilio number
+        print message.sid
 
 @app.route("/add-friend", methods=['GET', 'POST'])
 def add_friend():
