@@ -87,7 +87,7 @@ def send_tommorrow_text():
     # message = client.messages.create(body="A ChiCa in your circle needs child care tommorrow.  Can you help her?",
     #     to=+"+15104849529",    # Replace with your phone number
     #     from_="+18447079094") # Replace with your Twilio number
-	message = client.messages.create(body="Jenny please?! I love you <3",
+	message = client.messages.create(body="A cheeka in your circle needs child care day after tommorrow.  Can you help her?",
     	to="+15104849529",
     	from_="+18447079094")
 	#resp = twilio.twiml.Response()
@@ -99,12 +99,12 @@ def send_tommorrow_text():
 
 @app.route("/day-after-tommorrow-text", methods=['GET', 'POST'])
 def send_day_after_text():
-    msg_to_list = numbers.values()
-    for number in msg_to_list:
-        message = client.messages.create(body="A cheeka in your circle needs child care day after tommorrow.  Can you help her?",
-        to=number,    # Replace with your phone number
-        from_="+18447079094") # Replace with your Twilio number
-        print message.sid
+    message = client.messages.create(body="A cheeka in your circle needs child care day after tommorrow.  Can you help her?",
+    	to="+15104849529",
+    	from_="+18447079094")
+	#resp = twilio.twiml.Response()
+	print message.sid
+	return redirect("/record-message")
 
 @app.route("/add-friend", methods=['GET', 'POST'])
 def add_friend():
@@ -130,7 +130,7 @@ def confirm_add():
 @app.route("/record-message", methods=['GET', 'POST'])
 def record_message(): 
 	resp = twilio.twiml.Response()
-	resp.say("Record a message for your care giver after the tone.", voice="woman")
+	resp.say("Record a message for your care giver after the tone. In your message, please confirm you will bring food for your children and a little extra for the cheeka", voice="woman")
 	resp.record(maxLength="15", action="/handle-recording")
 	return str(resp)
 
