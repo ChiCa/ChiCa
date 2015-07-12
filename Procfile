@@ -1,1 +1,1 @@
-web: python chica_server.py
+web: gunicorn ChiCa.wsgi --log-file -
