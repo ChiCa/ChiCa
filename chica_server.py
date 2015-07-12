@@ -26,7 +26,7 @@ def start():
 	else:
 		numbers[from_number] = []
 		with resp.gather(numDigits=12, action="/sign-up", method="POST") as g:
- 			g.say("Welcome to ChiCa. ChiCa help you build a network of mothers who can exchange child care among eachother. To signup to the ChiCa community type in the number of your friend after the beep.")
+ 			g.say("Welcome to cheeka. Cheeka helps you build a circle of mothers who exchange child care. To sign up and start a cheeka circle, type in the phone number of a mother you trust who lives nearby after the beep.", voice="woman")
  	return str(resp)
 
 @app.route("/sign-up", methods=['GET', 'POST'])
@@ -47,7 +47,7 @@ def handle_key():
 def request_care():
 	resp = twilio.twiml.Response()
 	with resp.gather(numDigits=1, action="/decision", method="POST") as g:
- 		g.say("To request child care, press zero. To add a friend to your circle, press one.", voice="woman")
+ 		g.say("To request child care, press zero. To add a mother who lives near you, press one.", voice="woman")
  	return str(resp)
 
 @app.route("/decision", methods=['GET', 'POST'])
@@ -75,7 +75,7 @@ def send_text_messages():
 	if choice == "0":
 		return redirect("/tommorrow-text")
 	elif choice == "1":
-		return redirect ("/day-after-tomorrow-text.")
+		return redirect ("/day-after-tommorrow-text")
 	else:
 		resp.say("I am sorry, I did not understand.")
 		return redirect("/choose-day")
@@ -87,7 +87,7 @@ def send_tommorrow_text():
     # message = client.messages.create(body="A ChiCa in your circle needs child care tommorrow.  Can you help her?",
     #     to=+"+15104849529",    # Replace with your phone number
     #     from_="+18447079094") # Replace with your Twilio number
-	message = client.messages.create(body="A cheeka in your circle needs child care day after tommorrow.  Can you help her?",
+	message = client.messages.create(body="A ChiCa needs child care tomorrow. Can you help her? Call +1 844-707-9094 to hear her request.",
     	to="+15104849529",
     	from_="+18447079094")
 	#resp = twilio.twiml.Response()
@@ -99,10 +99,10 @@ def send_tommorrow_text():
 
 @app.route("/day-after-tommorrow-text", methods=['GET', 'POST'])
 def send_day_after_text():
-    message = client.messages.create(body="A cheeka in your circle needs child care day after tommorrow.  Can you help her?",
+
+	message = client.messages.create(body="A cheeka in your circle needs child care the day after tommorrow. Can you help her? Call +1 844-707-9094 to hear her request.",
     	to="+15104849529",
     	from_="+18447079094")
-	#resp = twilio.twiml.Response()
 	print message.sid
 	return redirect("/record-message")
 
@@ -111,7 +111,7 @@ def add_friend():
 	resp = twilio.twiml.Response()
 
 	with resp.gather(numDigits=12, action="/confirm-add", method="GET") as g:
-		g.say("To add your friend to your chica circle, enter her number.", voice="woman")
+		g.say("To add a mother who lives near you to your cheeka circle, enter her phone number.", voice="woman")
 	return str(resp)
 
 @app.route("/confirm-add", methods=['GET', 'POST'])
@@ -119,8 +119,7 @@ def confirm_add():
 	resp = twilio.twiml.Response()
 
 	new_friend = request.values.get('Digits', None)
-	numbers.append(new_friend)
-	print numbers
+	numbers["+13618160814"].append(new_friend)
 	resp.say("Thank you for adding your friend to your cheeka circle! She is now part of the cheeka community. Call cheeka back to request child care", voice="woman")
 	# with resp.gather(numDigits=0, action="/registered-user", method="GET") as g:
 	# 	g.say("Thank you for adding your friend to your chica circle! She is now part of the chica community. We will now forward you to the child care request menu, or you can hang up.", voice="woman")
@@ -131,7 +130,7 @@ def confirm_add():
 def record_message(): 
 	resp = twilio.twiml.Response()
 	resp.say("Record a message for your care giver after the tone. In your message, please confirm you will bring food for your children and a little extra for the cheeka", voice="woman")
-	resp.record(maxLength="15", action="/handle-recording")
+	resp.record(maxLength="10", action="/handle-recording")
 	return str(resp)
 
 @app.route("/handle-recording", methods=['GET', 'POST'])
@@ -141,9 +140,9 @@ def handle_recording():
 	recording_url = request.values.get("RecordingUrl", None)
 
 	resp = twilio.twiml.Response()
-	resp.say("Chica will now play back your recording", voice="woman")
+	resp.say("Cheeka will now play back your recording", voice="woman")
 	resp.play(recording_url)
-	resp.say("Thank you for using cheeka! Goodbye.", voice="woman")
+	resp.say("Thank you for using cheeka! Cheeka has requested child care from your circle. You will receive a confirmation and contact information soon. Goodbye.", voice="woman")
 	return str(resp)
 
 if __name__ == "__main__":
