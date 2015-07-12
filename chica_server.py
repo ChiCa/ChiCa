@@ -41,7 +41,7 @@ def handle_key():
 def request_care():
 	resp = twilio.twiml.Response()
 	with resp.gather(numDigits=1, action="/decision", method="POST") as g:
- 		g.say("To request child care, press zero. To add a friend's number, press one.", voice="woman")
+ 		g.say("To request child care, press zero. To add a friend to your circle, press one.", voice="woman")
  	return str(resp)
 
 @app.route("/decision", methods=['GET', 'POST'])
@@ -78,6 +78,19 @@ def record_message():
 
 @app.route("/add-friend", methods=['GET', 'POST'])
 def add_friend():
-	pass
+	resp = twilio.twiml.Response()
+	with resp.gather(numDigits=12, action="/confirm-add", method="GET") as g:
+		g.say("To add your friend to your chica circle, enter her number.", voice="woman")
+	return str(resp)
+
+@app.route("/confirm-add", methods=['GET', 'POST'])
+def confirm_add():
+	resp = twilio.twiml.Response()
+
+	new_friend = request.values.get('Digits', None)
+	numbers.append(new_friend)
+	resp.say("Thank you for adding your friend to your chica circle! She is now part of the chica community. We will now forward you to the child care request menu, or you can hang up.", voice="woman")
+	return redirect("/registered-user")
+
 if __name__ == "__main__":
     app.run(debug=True)
