@@ -1,0 +1,28 @@
+# ChiCa
+ChiCa enables mothers in developing countries to create trusted childcare networks.
+
+Inspiration
+----------------
+Team member Vanesa Ortiz founded a children's aid project in the Dominican Republic, where she's from. She noticed the dilemma working mothers in slums face - needing to work (usually far from home), but not being able to afford adequate childcare, and are thus forced to leave their young children alone. Young girls are especially at risk in these perilous situations.
+
+We created ChiCa to connect mothers to exchange childcare at no cost to each other. The requesting mother brings extra food to the caregiver for their children and as an incentive to the caregiver.
+
+ChiCa is accessible to women who may not have smartphones. ChiCa is SMS- and call-based, and works on feature phones (as well as smartphones). Also, by focusing on voice input, versus text, we even reach women who may not be literate.
+
+How it works
+----------------
+ChiCa is a feature-phone-based childcare platform powered by Twilio and Flask that connects mothers to exchange childcare at no cost to each other (see Dropbox link - "presentationslide.pdf).
+
+We're proud of creating a solution for a real problem, and working (from the start) to create a product for mothers to help themselves (vs. imposing).
+
+Built With
+----------------
+twilio
+flask
+python
+keynote
+sketch
+
+Workflow
+------------
+See a detailed workflow on this [spreadsheet] (https://www.dropbox.com/s/zdygzfyvy5h9dbp/presentationslide.pdf?dl=0) and a live DEMO on [Youtube] (https://www.youtube.com/watch?v=HeBm186W0ck).
