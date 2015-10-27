@@ -1,4 +1,5 @@
 # ChiCa
+
 ChiCa enables mothers in developing countries to create trusted childcare networks.
 
 Inspiration
@@ -17,12 +18,13 @@ We're proud of creating a solution for a real problem, and working (from the sta
 
 Built With
 ----------------
-twilio
-flask
-python
-keynote
-sketch
+Twilio
+Flask
+Python
+Keynote
+Adobe Illustrator
 
 Workflow
 ------------
 See a detailed workflow on this [spreadsheet] (https://www.dropbox.com/s/zdygzfyvy5h9dbp/presentationslide.pdf?dl=0) and a live DEMO on [Youtube] (https://www.youtube.com/watch?v=HeBm186W0ck).
+Follow us on [Twitter](https://twitter.com/Team_ChiCa)!
