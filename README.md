@@ -1,6 +1,11 @@
 # ChiCa
+<img src="images/chicalogo570x316.png" width="50%" alt="ChiCa - Mothers connected, children protected">
 
 ChiCa enables mothers in developing countries to create trusted childcare networks.
+
+Winner of the ChimeHack2 Hackathon UBER SOCIAL SCALABILITY AND SOCIAL IMPACT PRIZE
+----------------
+<img src="images/chimehack2winner.jpg" alt="ChiCa - Mothers connected, children protected">
 
 Inspiration
 ----------------
@@ -18,11 +23,7 @@ We're proud of creating a solution for a real problem, and working (from the sta
 
 Built With
 ----------------
-Twilio
-Flask
-Python
-Keynote
-Adobe Illustrator
+Twilio, Flask, Python
 
 Workflow
 ------------
