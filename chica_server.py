@@ -4,7 +4,7 @@ from twilio.rest import TwilioRestClient
 import os
  
 app = Flask(__name__)
-numbers = {"+13618160814":["+15104849529", "+13618160815"]}
+numbers = {"+1361XXXXXXX":["+1510XXXXXXX", "+1361XXXXXXX"]}
 
 #Account Sid and Auth Token from twilio.com/user/account
 account_sid = os.environ['TWILIO_ACCOUNT_SID']
@@ -87,9 +87,9 @@ def send_tommorrow_text():
     # message = client.messages.create(body="A ChiCa in your circle needs child care tommorrow.  Can you help her?",
     #     to=+"+15104849529",    # Replace with your phone number
     #     from_="+18447079094") # Replace with your Twilio number
-	message = client.messages.create(body="A ChiCa needs child care tomorrow. Can you help her? Call +1 844-707-9094 to hear her request.",
-    	to="+15104849529",
-    	from_="+18447079094")
+	message = client.messages.create(body="A ChiCa needs child care tomorrow. Can you help her? Call +1 844-XXX-XXXX to hear her request.",
+    	to="+1510XXXXXXX",
+    	from_="+1844XXXXXXX")
 	#resp = twilio.twiml.Response()
 	print message.sid
 	return redirect("/record-message")
