@@ -1,4 +1,4 @@
-# ChiCa
+# ChiCa - Mothers connected. Children protected.
 <img src="images/chicalogo570x316.png" width="30%" alt="ChiCa - Mothers connected, children protected">
 
 ChiCa enables mothers in developing countries to create trusted childcare networks.
@@ -27,5 +27,5 @@ Twilio, Flask, Python
 
 Workflow
 ------------
-See a **detailed workflow on this [spreadsheet] (https://www.dropbox.com/s/zdygzfyvy5h9dbp/presentationslide.pdf?dl=0)** and a **live DEMO on [Youtube] (https://www.youtube.com/watch?v=HeBm186W0ck)**.
+See a **detailed workflow on this [spreadsheet](https://www.dropbox.com/s/zdygzfyvy5h9dbp/presentationslide.pdf?dl=0) ** and a **live DEMO on [Youtube](https://www.youtube.com/watch?v=HeBm186W0ck) **.
 Follow us on [Twitter](https://twitter.com/Team_ChiCa)!
