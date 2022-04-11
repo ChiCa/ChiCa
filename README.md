@@ -9,7 +9,7 @@ ChiCa enables mothers in developing countries to create trusted childcare networ
 
 Inspiration
 ----------------
-Team member Vanesa Ortiz founded a children's aid project in the Dominican Republic, where she's from. She noticed the dilemma working mothers in slums face - needing to work (usually far from home), but not being able to afford adequate childcare, and are thus forced to leave their young children alone. Young girls are especially at risk in these perilous situations.
+Team member Vanesa Ortiz volunteered at a children's aid project in the Dominican Republic, where she's from. She noticed the dilemma working mothers in slums face - needing to work (usually far from home), but not being able to afford adequate childcare, and are thus forced to leave their young children alone. Young girls are especially at risk in these perilous situations.
 
 We created ChiCa to connect mothers to exchange childcare at no cost to each other. The requesting mother brings extra food to the caregiver for their children and as an incentive to the caregiver.
 
@@ -27,5 +27,5 @@ Twilio, Flask, Python
 
 Workflow
 ------------
-See a **detailed workflow on this [spreadsheet](https://www.dropbox.com/s/zdygzfyvy5h9dbp/presentationslide.pdf?dl=0) ** and a **live DEMO on [Youtube](https://www.youtube.com/watch?v=HeBm186W0ck) **.
+See a **detailed workflow on this [spreadsheet](https://www.dropbox.com/s/g4syt3ck497dhb4/presentationslide.pdf?dl=0) ** and a **live DEMO on [Youtube](https://www.youtube.com/watch?v=HeBm186W0ck) **.
 Follow us on [Twitter](https://twitter.com/Team_ChiCa)!
