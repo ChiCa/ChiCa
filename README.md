@@ -19,7 +19,7 @@ How it works
 ----------------
 ChiCa is a feature-phone-based childcare platform powered by Twilio and Flask that connects mothers to exchange childcare at no cost to each other (see [workflow](https://www.dropbox.com/s/g4syt3ck497dhb4/presentationslide.pdf?dl=0)).
 
-We're proud of creating a solution for a real problem, and working (from the start) to create a product for mothers to help themselves (vs. imposing).
+We're proud of creating a solution for a real problem, and working from the start to create a product for mothers to help themselves (vs. imposing).
 
 Built With
 ----------------
